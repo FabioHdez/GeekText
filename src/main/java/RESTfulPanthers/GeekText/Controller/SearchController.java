@@ -6,14 +6,15 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-public class ApiControllers {
+@RequestMapping("search")
+public class SearchController {
 
     @GetMapping(value = "/")
-    public String getPage(HttpServletRequest request){
-        String name = request.getParameter("name");
-        if(name == null){
-            name = "";
+    public String getSearchPage(HttpServletRequest request){
+        String genre = request.getParameter("genre");
+        if(genre == null){
+            return "Please input a genre";
         }
-        return "Welcome " + name;
+        return "Welcome to the search page. Now showing: " + genre;
     }
 }

@@ -6,14 +6,15 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-public class ApiControllers {
+@RequestMapping("wishlist")
+public class WishlistController {
 
     @GetMapping(value = "/")
-    public String getPage(HttpServletRequest request){
+    public String getWishlistPage(HttpServletRequest request){
         String name = request.getParameter("name");
         if(name == null){
-            name = "";
+            return "Please input a wishlist name";
         }
-        return "Welcome " + name;
+        return "Welcome to the wish list page. Now showing your "+ name +" wish list";
     }
 }

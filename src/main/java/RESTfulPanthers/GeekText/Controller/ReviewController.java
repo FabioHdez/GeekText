@@ -5,15 +5,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
+@RequestMapping("review")
 @RestController
-public class ApiControllers {
-
+public class ReviewController {
     @GetMapping(value = "/")
-    public String getPage(HttpServletRequest request){
-        String name = request.getParameter("name");
-        if(name == null){
-            name = "";
+    public String getReviewPage(HttpServletRequest request){
+        String book = request.getParameter("book");
+        if(book == null){
+            return "Please input a book name";
         }
-        return "Welcome " + name;
+        return "Now reviewing Book: "+book+".";
     }
 }
+

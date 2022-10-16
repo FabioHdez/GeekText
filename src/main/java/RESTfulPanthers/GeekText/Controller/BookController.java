@@ -6,14 +6,16 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-public class ApiControllers {
+@RequestMapping("book")
+public class BookController {
 
     @GetMapping(value = "/")
-    public String getPage(HttpServletRequest request){
+
+    public String getBookPage(HttpServletRequest request){
         String name = request.getParameter("name");
         if(name == null){
-            name = "";
+            return "Please input a book name";
         }
-        return "Welcome " + name;
+        return "Welcome to the book page. Now showing: "+name;
     }
 }
