@@ -9,24 +9,32 @@ public class Wishlist {
 //@GenerateValue probably generates a random value idk...
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-//@Column tells mySQL that this will be a column in the database
+    private String id;
+    //@Column tells mySQL that this will be a column in the database
     @Column
-    private String owner;
+    private String user;
     @Column
     private String title;
 
-    public long getId() {
+    //Constructor
+    public Wishlist(String id, String user, String title) {
+        this.id = id;
+        this.user = user;
+        this.title = title;
+    }
+
+    //Getters and setters
+    public String getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
-    public String getOwner() {
-        return owner;
+    public String getUser() {
+        return user;
     }
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setUser(String user) {
+        this.user = user;
     }
     public String getTitle() {
         return title;
@@ -35,3 +43,4 @@ public class Wishlist {
         this.title = title;
     }
 }
+//Sprint 3: just play around with the variables that you need for your features make sure to update the constructor and the getters and setters

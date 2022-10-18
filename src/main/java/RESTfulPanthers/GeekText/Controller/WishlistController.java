@@ -1,20 +1,23 @@
 package RESTfulPanthers.GeekText.Controller;
+import RESTfulPanthers.GeekText.Models.Wishlist;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("wishlist")
 public class WishlistController {
 
     @GetMapping(value = "/")
-    public String getWishlistPage(HttpServletRequest request){
+    @ResponseBody
+    public Wishlist getWishlistPage(HttpServletRequest request){
+        String user = request.getParameter("user");
         String name = request.getParameter("name");
-        if(name == null){
-            return "Please input a wishlist name";
-        }
-        return "Welcome to the wish list page. Now showing your "+ name +" wish list";
+        return new Wishlist(UUID.randomUUID().toString(),user,name);
     }
 }
+// Sprint 3: Here just change things from my feature and adjust it to your feature
