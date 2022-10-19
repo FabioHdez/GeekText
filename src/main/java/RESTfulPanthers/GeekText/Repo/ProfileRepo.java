@@ -1,8 +1,8 @@
 package RESTfulPanthers.GeekText.Repo;
-import RESTfulPanthers.GeekText.Models.Wishlist;
+import RESTfulPanthers.GeekText.Models.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface WishlistRepo extends JpaRepository<Wishlist, String> {
+public interface ProfileRepo extends JpaRepository<Profile, String> {
 
 }
 //Sprint 3: Just change the name of the interface from WishlistRepo to your interface name and also the type in JpaRepository<Wishlist
