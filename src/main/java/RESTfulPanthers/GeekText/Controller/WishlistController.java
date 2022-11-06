@@ -17,8 +17,8 @@ public class WishlistController {
     @ResponseBody
     public Wishlist getWishlistPage(HttpServletRequest request){
         String user = request.getParameter("user");
-        String name = request.getParameter("name");
-        return new Wishlist(UUID.randomUUID().toString(),user,name);
+        String title = request.getParameter("title");
+        return new Wishlist(UUID.randomUUID().toString(),user,title);
     }
     @PostMapping(value = "/create")
     @ResponseBody
