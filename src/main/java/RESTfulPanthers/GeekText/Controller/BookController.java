@@ -1,10 +1,12 @@
-package Controllers;
+package RESTfulPanthers.Controllers;
 
+//Import necessary packages and features
 import Models.Book;
 import Repositories.BookRepository;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
+//Form an ordered collection
 import java.util.List;
 @Controller
 public class BookController {
