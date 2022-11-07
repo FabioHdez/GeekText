@@ -17,6 +17,7 @@ public class BookController {
         this.bookRepository = bookRepository;
     }
 
+    //Maps a handler method to a field in the GraphQL schema
     @SchemaMapping(typeName = "Query",value = "allBooks")
     public List<Book> findAll() {
         return bookRepository.findAll();
