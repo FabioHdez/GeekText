@@ -1,0 +1,23 @@
+type Book {
+    id: ID!
+    title: String
+    rating: Rating
+    user: User
+    comment: String
+    date: String
+}
+
+type Rating {
+    rating: String
+    star: String
+}
+
+type User {
+    id: ID!
+    Name: String
+    books: [Book]
+}
+
+type Query {
+    booksInfo: [Book]
+}
