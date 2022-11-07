@@ -1,5 +1,6 @@
-package Repositories;
+package RESTfulPanthers.Repositories;
 
+//Import necessary packages and features
 import Models.Book;
 import Models.Rating;
 import org.springframework.stereotype.Repository;
@@ -7,28 +8,36 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+
+//Allows accessed data from a connected database
 @Repository
 public class BookRepository {
 
     private final UserRepository userRepository;
-
+    
+    //Store strings
     private List<Book> books = new ArrayList<>();
 
     public BookRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
-    public List<Book> findAll() {
+    
+    //Find all books
+    public List<Book> findAllBooks() {
         return books;
     }
-
-    public Book findOne(Integer id) {
+    
+    //Find a books
+    public Book findBook(Integer id) {
         return books.stream()
                 .filter(book -> book.id() == id)
                 .findFirst().orElseThrow(() -> new RuntimeException("Book not found"));
     }
-
+    
+    //Being executed after the spring bean is initialized
     @PostConstruct
+    
+    //Store and fill the database
     private void init() {
         books.add(new Book(1,
                 "Book Genre #1",
