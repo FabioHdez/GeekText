@@ -27,7 +27,7 @@ public class BookRepository {
         return books;
     }
     
-    //Find a books
+    //Find a book
     public Book findBook(Integer id) {
         return books.stream()
                 .filter(book -> book.id() == id)
