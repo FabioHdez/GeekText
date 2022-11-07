@@ -1,4 +1,4 @@
-package Models;
+package RESTfulPanthers.Models;
 
 //Record type to create classes
 public record User(Integer id, String Name) {
