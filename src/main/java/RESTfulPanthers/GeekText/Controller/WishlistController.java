@@ -2,6 +2,7 @@ package RESTfulPanthers.GeekText.Controller;
 import RESTfulPanthers.GeekText.Models.Wishlist;
 import RESTfulPanthers.GeekText.Repo.WishlistRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,18 +17,27 @@ public class WishlistController {
     @GetMapping(value = "/")
     @ResponseBody
     public Wishlist getWishlist(HttpServletRequest request){
-        String user = request.getParameter("user");
         String title = request.getParameter("title");
-        return new Wishlist(UUID.randomUUID().toString(),user,title);
+        String user = request.getParameter("user");
+
+        Wishlist wishlist = wishlistRepo.findByTitleAndUser(title,user);
+        if(wishlist == null){
+            return new Wishlist(null,null,null);
+        }
+        return wishlist;
+
     }
     @PostMapping(value = "/create")
     @ResponseBody
-    public Wishlist saveWishlist(@RequestBody Wishlist wishlist){
+    public ResponseEntity<String> saveWishlist(@RequestBody Wishlist wishlist){
+        // Check if name is unique
+        Wishlist dbWishlist = wishlistRepo.findByTitleAndUser(wishlist.getTitle(), wishlist.getUser());
+        if (dbWishlist != null )
+            return ResponseEntity.badRequest().body("Title already exists for this user.");
 
-        // run logic to verify if name is unique and then save to database
+        // Will run if name is unique
         wishlist.setId(UUID.randomUUID().toString());
         wishlistRepo.save(wishlist);
-        return wishlist;
+        return ResponseEntity.ok().body("Wishlist saved.");
     }
 }
-// Sprint 3: Here just change things from my feature and adjust it to your feature
