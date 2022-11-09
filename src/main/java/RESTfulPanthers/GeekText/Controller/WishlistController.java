@@ -15,15 +15,18 @@ public class WishlistController {
     private WishlistRepo wishlistRepo;
     @GetMapping(value = "/")
     @ResponseBody
-    public Wishlist getWishlistPage(HttpServletRequest request){
+    public Wishlist getWishlist(HttpServletRequest request){
         String user = request.getParameter("user");
         String title = request.getParameter("title");
         return new Wishlist(UUID.randomUUID().toString(),user,title);
     }
     @PostMapping(value = "/create")
     @ResponseBody
-    public Wishlist createWishlistPage(@RequestBody Wishlist wishlist){
+    public Wishlist saveWishlist(@RequestBody Wishlist wishlist){
+
         // run logic to verify if name is unique and then save to database
+        wishlist.setId(UUID.randomUUID().toString());
+        wishlistRepo.save(wishlist);
         return wishlist;
     }
 }

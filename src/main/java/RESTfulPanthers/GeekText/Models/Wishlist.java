@@ -1,14 +1,16 @@
 package RESTfulPanthers.GeekText.Models;
 
+
+
 import javax.persistence.*;
 
 //@Entity tells mySQL that this will be a table
 @Entity
+
 public class Wishlist {
 //@Id tells mySQL that long id will be unique for each WishList
 //@GenerateValue probably generates a random value idk...
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     //@Column tells mySQL that this will be a column in the database
     @Column
@@ -17,11 +19,15 @@ public class Wishlist {
     private String title;
 
     //Constructor
+
+
     public Wishlist(String id, String user, String title) {
         this.id = id;
         this.user = user;
         this.title = title;
     }
+    public Wishlist(){}
+
 
     //Getters and setters
     public String getId() {

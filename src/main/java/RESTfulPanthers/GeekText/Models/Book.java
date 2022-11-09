@@ -8,7 +8,6 @@ public class Book {
     //@Id tells mySQL that long id will be unique for each WishList
 //@GenerateValue probably generates a random value idk...
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     //@Column tells mySQL that this will be a column in the database
     @Column
