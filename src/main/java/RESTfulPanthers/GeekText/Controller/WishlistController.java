@@ -40,4 +40,17 @@ public class WishlistController {
         wishlistRepo.save(wishlist);
         return ResponseEntity.ok().body("Wishlist saved.");
     }
+
+    @PostMapping(value = "/add")
+    @ResponseBody
+    public ResponseEntity<String> addBook(HttpServletRequest request){
+        String title = request.getParameter("title");
+        String user = request.getParameter("user");
+        String book = request.getParameter("book");
+
+        Wishlist wishlist = wishlistRepo.findByTitleAndUser(title,user);
+        wishlist.addBook(book);
+        wishlistRepo.save(wishlist);
+        return ResponseEntity.ok().body("Book was added.");
+    }
 }
