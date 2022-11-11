@@ -61,5 +61,9 @@ public class Wishlist {
     public void addBook(String newBook) {
         this.books.add(newBook);
     }
+    public void removeBook(String book) {
+        while(this.books.remove(book)) {}
+    }
+
 }
 //Sprint 3: just play around with the variables that you need for your features make sure to update the constructor and the getters and setters

@@ -47,10 +47,23 @@ public class WishlistController {
         String title = request.getParameter("title");
         String user = request.getParameter("user");
         String book = request.getParameter("book");
-
+        if(book == null){return ResponseEntity.badRequest().body("Please enter book name.");}
         Wishlist wishlist = wishlistRepo.findByTitleAndUser(title,user);
         wishlist.addBook(book);
         wishlistRepo.save(wishlist);
         return ResponseEntity.ok().body("Book was added.");
+    }
+    @PostMapping(value = "/checkout")
+    @ResponseBody
+    public ResponseEntity<String> removeBook(HttpServletRequest request){
+        String title = request.getParameter("title");
+        String user = request.getParameter("user");
+        String book = request.getParameter("book");
+        if(book == null){return ResponseEntity.badRequest().body("Please enter book name.");}
+        
+        Wishlist wishlist = wishlistRepo.findByTitleAndUser(title,user);
+        wishlist.removeBook(book);
+        wishlistRepo.save(wishlist);
+        return ResponseEntity.ok().body("Book was added to cart.");
     }
 }
