@@ -2,8 +2,8 @@ package RESTfulPanthers.GeekText.Controller;
 
 import RESTfulPanthers.GeekText.Models.Card;
 import RESTfulPanthers.GeekText.Models.User;
-import RESTfulPanthers.GeekText.Models.CardRepo;
-import RESTfulPanthers.GeekText.Models.UserRepo;
+import RESTfulPanthers.GeekText.Repo.CardRepo;
+import RESTfulPanthers.GeekText.Repo.UserRepo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
