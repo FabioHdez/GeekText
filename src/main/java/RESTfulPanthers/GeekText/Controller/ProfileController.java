@@ -1,31 +1,9 @@
-// package RESTfulPanthers.GeekText.Controller;
-// import RESTfulPanthers.GeekText.Models.Profile;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.RequestMapping;
-// import org.springframework.web.bind.annotation.ResponseBody;
-// import org.springframework.web.bind.annotation.RestController;
+package RESTfulPanthers.GeekText.Controller;
 
-// import javax.servlet.http.HttpServletRequest;
-// import java.util.UUID;
-
-// @RestController
-// @RequestMapping("profile")
-// public class ProfileController {
-//     @GetMapping(value = "/")
-//     @ResponseBody
-//     public Profile geProfilePage(HttpServletRequest request){
-//         String name = request.getParameter("name");
-//         String username = request.getParameter("username");
-//         return new Profile(UUID.randomUUID().toString(),username,name);
-//     }
-// }
-
-package com.alex.user.rest.Controller;
-
-import com.alex.user.rest.Models.Card;
-import com.alex.user.rest.Models.User;
-import com.alex.user.rest.Repo.CardRepo;
-import com.alex.user.rest.Repo.UserRepo;
+import RESTfulPanthers.GeekText.Models.Card;
+import RESTfulPanthers.GeekText.Models.User;
+import RESTfulPanthers.GeekText.Models.CardRepo;
+import RESTfulPanthers.GeekText.Models.UserRepo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +12,7 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import java.util.List;
 
 @RestController
-public class APIController {
+public class ProfileController {
 
     @Autowired
     private UserRepo userRepo;
@@ -92,4 +70,3 @@ public class APIController {
     }
 
 }
-
