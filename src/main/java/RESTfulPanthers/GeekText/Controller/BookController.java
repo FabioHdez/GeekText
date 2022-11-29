@@ -15,9 +15,18 @@ public class BookController {
     @GetMapping(value = "/")
     @ResponseBody
     public Book getBookPage(HttpServletRequest request){
+        // check the book ISBN
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        String price = request.getParameter("price");
+        String author = request.getParameter("author");
         String genre = request.getParameter("genre");
-        String title = request.getParameter("title");
-        return new Book(UUID.randomUUID().toString(),title,genre);
+        String publisher = request.getParameter("publisher");
+        String year = request.getParameter("year");
+        String sold = request.getParameter("sold");
+
+
+        return new Book(UUID.randomUUID().toString(),name,description,price,author,genre,publisher,year,sold);
     }
 }
 // Sprint 3: Here just change things from my feature and adjust it to your feature
