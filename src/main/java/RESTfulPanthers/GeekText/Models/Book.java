@@ -1,5 +1,7 @@
 package RESTfulPanthers.GeekText.Models;
 
+package RESTfulPanthers.GeekText.Models;
+
 import javax.persistence.*;
 
 //@Entity tells mySQL that this will be a table
@@ -8,39 +10,73 @@ public class Book {
     //@Id tells mySQL that long id will be unique for each WishList
 //@GenerateValue probably generates a random value idk...
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private String isbn;
     //@Column tells mySQL that this will be a column in the database
     @Column
-    private String title;
+    private String name;
+    @Column
+    private String description;
+    @Column
+    private String price;
+    @Column
+    private String author;
     @Column
     private String genre;
+    @Column
+    private String publisher;
+    @Column
+    private String year;
+    @Column
+    private String sold;
+
 
     //Constructor
-    public Book(String id, String title, String genre) {
-        this.id = id;
+    public Book(String isbn, String name, String description, String price,
+                String author, String genre, String publisher, String year, String sold ) {
+        this.isbn = isbn;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.author = author;
         this.genre = genre;
-        this.title = title;
+        this.publisher = publisher;
+        this.year = year;
+        this.sold = sold;
     }
 
     //Getters and setters
     public String getId() {
-        return id;
+        return isbn;
     }
     public void setId(String id) {
-        this.id = id;
+        this.isbn = isbn;
     }
-    public String getTitle() {
-        return title;
-    }
+    public String getName() {return name;}
     public void setTitle(String title) {
-        this.title = title;
+        this.name = name;
     }
+    public String getDescription() {return description;}
+    public void setDescription(String description) {this.description = description;}
+    public String getPrice() {return price;}
+    public void setPrice(String price) {this.price = price;}
+    public String getAuthor() {return author;}
+    public void setAuthor(String author) {this.author = author;}
     public String getGenre() {
         return genre;
     }
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setGenre(String genre) {this.genre = genre;}
+    public String getPublisher() {
+        return publisher;
     }
+    public void setPublisher(String publisher) {this.publisher = publisher;}
+    public String getYear() {
+        return year;
+    }
+    public void setYear(String year) {this.year = year;}
+    public String getSold() {
+        return sold;
+    }
+    public void setSold(String sold) {this.sold = sold;}
+
 }
 //Sprint 3: just play around with the variables that you need for your features make sure to update the constructor and the getters and setters
