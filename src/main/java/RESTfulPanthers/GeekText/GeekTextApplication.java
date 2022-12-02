@@ -2,13 +2,14 @@ package RESTfulPanthers.GeekText;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-//Run application
 @SpringBootApplication
-public class GeekTextApplication {
+@EnableJpaAuditing
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GeekTextApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 
 }
