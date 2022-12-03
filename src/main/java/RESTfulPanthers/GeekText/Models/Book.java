@@ -1,6 +1,8 @@
 package RESTfulPanthers.GeekText.Models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 //@Entity tells mySQL that this will be a table
 @Entity
@@ -27,6 +29,9 @@ public class Book {
     @Column
     private String sold;
 
+    @Column
+    private ArrayList<String> info;
+
 
     //Constructor
     public Book(String isbn, String name, String description, String price,
@@ -42,11 +47,17 @@ public class Book {
         this.sold = sold;
     }
 
+    public Book(){
+        this.info = new ArrayList<String>();
+    }
+
+
+
     //Getters and setters
-    public String getId() {
+    public String getIsbn() {
         return isbn;
     }
-    public void setId(String id) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
     public String getName() {return name;}
@@ -75,6 +86,9 @@ public class Book {
         return sold;
     }
     public void setSold(String sold) {this.sold = sold;}
+
+    public List<String> getInfo() {return this.info;}
+    public void addInfo(String newInfo) {this.info.add(newInfo);}
 
 }
 //Sprint 3: just play around with the variables that you need for your features make sure to update the constructor and the getters and setters
