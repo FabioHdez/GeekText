@@ -42,6 +42,7 @@ public class ProfileController {
         updateUser.setHomeAddress(user.getHomeAddress());
         updateUser.setName(user.getName());
         updateUser.setPassword(user.getPassword());
+        updateUser.setUsername(user.getUsername());
         userRepo.save(updateUser);
         return "Updated!";
     }
