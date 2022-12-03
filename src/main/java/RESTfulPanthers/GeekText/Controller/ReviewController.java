@@ -1,5 +1,4 @@
 package RESTfulPanthers.GeekText.Controller;
-import RESTfulPanthers.GeekText.Models.Profile;
 import RESTfulPanthers.GeekText.Models.Review;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
