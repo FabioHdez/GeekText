@@ -12,6 +12,8 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import java.util.List;
 
 @RestController
+@RequestMapping("users")
+
 public class ProfileController {
 
     @Autowired
@@ -20,15 +22,10 @@ public class ProfileController {
     @Autowired
     private CardRepo cardRepo;
 
-    @GetMapping(value = "/")
-    public String getPage(){
-        return "Welcome";
-    }
-
     @Autowired
     UserRepo lRepo;
 
-    @GetMapping("/users/username")
+    @GetMapping("/username")
     public ResponseEntity<List<User>> getUserByUsername(@RequestParam String username) {
         return new ResponseEntity<List<User>>(lRepo.findByUsername(username), HttpStatus.OK);
     }
@@ -39,7 +36,7 @@ public class ProfileController {
         return "Saved!";
     }
 
-    @PutMapping(value = "update/{id}")
+    @PutMapping(value = "/update/{id}")
     public String updateUser(@PathVariable long id, @RequestBody User user){
         User updateUser = userRepo.findById(id).get();
         updateUser.setHomeAddress(user.getHomeAddress());
@@ -49,7 +46,7 @@ public class ProfileController {
         return "Updated!";
     }
 
-    @GetMapping("/users/{userID}/cards")
+    @GetMapping("/{userID}/cards")
     public ResponseEntity<List<Card>> getAllCardsByUserId(@PathVariable(value = "userID") Long userId) {
         if (!userRepo.existsById(userId)) {
             throw new ResourceNotFoundException("Not found User with id = " + userId);
@@ -59,7 +56,7 @@ public class ProfileController {
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
 
-    @PostMapping("/users/{userID}/cards")
+    @PostMapping("/{userID}/cards")
     public ResponseEntity<Card> createCard(@PathVariable(value = "userID") Long userID, @RequestBody Card cardRequest) {
         Card card = userRepo.findById(userID).map(user -> {
             cardRequest.setUser(user);
