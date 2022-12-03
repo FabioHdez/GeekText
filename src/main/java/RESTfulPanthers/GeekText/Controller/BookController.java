@@ -29,8 +29,7 @@ public class BookController {
         String year = request.getParameter("year");
         String sold = request.getParameter("sold");
 
-        Book book = bookRepo.findbyBookDetails(isbn,name,description,price,
-                author,genre,publisher,year,sold);
+        Book book = bookRepo.findByIsbn(isbn);
         if(book == null){
             return new Book(null,null,null,null,
                     null, null, null, null, null);
@@ -47,9 +46,7 @@ public class BookController {
     @ResponseBody
     public ResponseEntity<String> saveBook(@RequestBody Book book){
         // Check if name is unique
-        Book dbBook = bookRepo.findbyBookDetails(book.getIsbn(),book.getName(),book.getDescription(),book.getPrice(),
-                book.getAuthor(), book.getGenre(), book.getPublisher(),
-                book.getYear(), book.getSold());
+        Book dbBook = bookRepo.findByIsbn(book.getIsbn());
         if (dbBook != null )
             return ResponseEntity.badRequest().body("Book details already exists for this user.");
 
@@ -72,10 +69,13 @@ public class BookController {
         String year = request.getParameter("year");
         String sold = request.getParameter("sold");
         if(isbn == null){return ResponseEntity.badRequest().body("Please enter book details.");}
-        Book bookDetails = bookRepo.findbyBookDetails(isbn, name, description, price,
-                author, genre, publisher, year, sold);
-        bookDetails.addInfo(isbn);
-        bookRepo.save(bookDetails);
+        Book bookDetails = bookRepo.findByIsbn(isbn);
+        if(bookDetails != null){return ResponseEntity.badRequest().body("ISBN already exists.");}
+
+        Book newBook = new Book(isbn,name,description,price,author,genre,publisher,year,sold);
+        //bookDetails.setIsbn(isbn);
+//        bookDetails.addInfo(isbn);
+        bookRepo.save(newBook);
         return ResponseEntity.ok().body("Book details were added.");
     }
 

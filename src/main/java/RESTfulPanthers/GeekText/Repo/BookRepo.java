@@ -9,10 +9,7 @@ public interface BookRepo extends JpaRepository<Book, String> {
     // 	with the book ISBN, book name, book description,
     // 	price, author, genre, publisher ,
     // 	year published and copies sold.
-    Book findbyBookDetails(String isbn,String name,String description,
-                              String price,String author,
-                              String genre,String publisher,
-                              String year,String sold);
+    Book findByIsbn(String isbn);
 
     // Must be able to retrieve a book details by ISBN
     List <Book> findByInfo(String Info);
